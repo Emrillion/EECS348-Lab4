@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 // A program to convert temperatures between various scales
 
 float celsius_to_fahrenheit(float celsius) {
@@ -25,18 +26,32 @@ float kelvin_to_fahrenheit(float kelvin) {
     return (9.0 / 5.0)*(kelvin - 273.15) + 32.0;
 }
 
-int TempConversionMain() {
+int main() {
     float temp;
     char scale;
     char target_scale;
+    bool valid_input = false;
     
+    // Validate user input for temperature and scales
     // Get user input
-    printf("Enter a temperature value:");
-    scanf("%f", &temp);
-    printf("Choose the temperature scale of the input value (F, C, K): ");
-    scanf(" %c", &scale);
-    printf("Choose the target temperature scale (F, C, K): ");
-    scanf(" %c", &target_scale);
+
+    while (!valid_input) {
+        printf("Enter a temperature value:");
+        scanf("%f", &temp);
+        printf("Choose the temperature scale of the input value (F, C, K): ");
+        scanf(" %c", &scale);
+        printf("Choose the target temperature scale (F, C, K): ");
+        scanf(" %c", &target_scale);
+        if ((scale != 'F' && scale != 'C' && scale != 'K') || (target_scale != 'F' && target_scale != 'C' && target_scale != 'K')) {
+            printf("Invalid scale input. Please enter F, C, or K.\n");
+        } else if (scale == target_scale) {
+            printf("Input and target scales cannot be the same. Please choose different scales.\n");
+        } else if (scale == 'K' && temp < 0) {
+            printf("Invalid temperature input. Kelvin cannot be negative.\n"); 
+        } else {
+            valid_input = true;
+        }
+    }
 
     // Perform conversion based on user input
     float result;
@@ -54,6 +69,7 @@ int TempConversionMain() {
         result = kelvin_to_fahrenheit(temp);
     } else {
         printf("Invalid scale input.\n");
+    return 1;
     }
     // Print the result
     printf("Converted temperature: %.2f %c\n", result, target_scale);

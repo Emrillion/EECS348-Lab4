@@ -1,9 +1,20 @@
-#script to compile things
+# script to compile things
 
-compile_scripts: footballScore.c, temperatureConversion.c
-	gcc footballScore.c temperatureConversion.c -o footballscore
-	@echo "done"
+# Compiler
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c11
+
+# Default target
+all: footballScore temperatureConversion
+
+footballScore: footballScore.c
+	$(CC) $(CFLAGS) footballScore.c -o footballScore
+	@echo "footballScore compiled"
+
+temperatureConversion: temperatureConversion.c
+	$(CC) $(CFLAGS) temperatureConversion.c -o temperatureConversion
+	@echo "temperatureConversion compiled"
 
 clean:
-	rm -f footballscore
+	rm -f footballScore 
 	rm -f temperatureConversion

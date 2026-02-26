@@ -1,7 +1,7 @@
 #include <stdio.h>
 // Program to find possible combinations of scoring plays
 
-int FootballScore() {
+int main() {
     int num;
     num = -1; // Initialize num to a value that is not 0 or 1 to enter the loop 
     while (num != 0 && num != 1) {
