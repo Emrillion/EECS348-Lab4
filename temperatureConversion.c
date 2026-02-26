@@ -27,9 +27,35 @@ float kelvin_to_fahrenheit(float kelvin) {
 
 int TempConversionMain() {
     float temp;
+    char scale;
+    char target_scale;
+    
+    // Get user input
     printf("Enter a temperature value:");
     scanf("%f", &temp);
+    printf("Choose the temperature scale of the input value (F, C, K): ");
+    scanf(" %c", &scale);
+    printf("Choose the target temperature scale (F, C, K): ");
+    scanf(" %c", &target_scale);
 
+    // Perform conversion based on user input
+    float result;
+    if (scale == 'C' && target_scale == 'F') {
+        result = celsius_to_fahrenheit(temp);
+    } else if (scale == 'F' && target_scale == 'C') {
+        result = fahrenheit_to_celsius(temp);
+    } else if (scale == 'C' && target_scale == 'K') {
+        result = celsius_to_kelvin(temp);
+    } else if (scale == 'K' && target_scale == 'C') {
+        result = kelvin_to_celsius(temp);
+    } else if (scale == 'F' && target_scale == 'K') {
+        result = fahrenheit_to_kelvin(temp);
+    } else if (scale == 'K' && target_scale == 'F') {
+        result = kelvin_to_fahrenheit(temp);
+    } else {
+        printf("Invalid scale input.\n");
+    }
+    printf("Converted temperature: %.2f %c\n", result, target_scale);
 
     return 0;
 }
