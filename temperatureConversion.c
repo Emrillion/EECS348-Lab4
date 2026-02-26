@@ -55,7 +55,32 @@ int TempConversionMain() {
     } else {
         printf("Invalid scale input.\n");
     }
+    // Print the result
     printf("Converted temperature: %.2f %c\n", result, target_scale);
+
+    //Categorize temperature
+    // First convert the input temperature to Celsius
+    float temp_in_celsius;
+    if (scale == 'C') {
+        temp_in_celsius = temp;
+    } else if (scale == 'F') {
+        temp_in_celsius = fahrenheit_to_celsius(temp);
+    } else if (scale == 'K') {
+        temp_in_celsius = kelvin_to_celsius(temp);
+    }
+    // Now categorize 
+    if (temp_in_celsius < 0) {
+        printf("Freezing. Stay inside.\n");
+    } else if (temp_in_celsius >= 0 && temp_in_celsius < 10) {
+        printf("Cold. Wear a jacket.\n");
+    } else if (temp_in_celsius >= 10 && temp_in_celsius < 25) {
+        printf("Comfortable. No action needed.\n");
+    } else if (temp_in_celsius >= 25 && temp_in_celsius < 35) {
+        printf("Hot. Stay hydrated.\n");
+    } else {
+        printf("Extreme Heat. Stay inside.\n");
+    }
+
 
     return 0;
 }
