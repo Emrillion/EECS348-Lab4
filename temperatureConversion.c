@@ -1,11 +1,13 @@
 #include <stdio.h>
 // A program to convert temperatures between various scales
 
-float celsius_to_fahrenheit(float c) {
-    return (9.0 / 5.0)*c + 32.0;
+float celsius_to_fahrenheit(float celsius) {
+    return (9.0 / 5.0)*celsius + 32.0;
 }
 
-
+float fahrenheit_to_celsius(float fahrenheit) {
+    return (5.0 / 9.0)*(fahrenheit - 32.0);
+}
 
 
 int TempConversionMain() {
