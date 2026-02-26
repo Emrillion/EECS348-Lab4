@@ -9,6 +9,13 @@ float fahrenheit_to_celsius(float fahrenheit) {
     return (5.0 / 9.0)*(fahrenheit - 32.0);
 }
 
+float celsius_to_kelvin(float celsius) {
+    return celsius + 273.15;
+}
+
+float kelvin_to_celsius(float kelvin) {
+    return kelvin - 273.15;
+}
 
 int TempConversionMain() {
     float temp;
