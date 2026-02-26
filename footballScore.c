@@ -1,8 +1,7 @@
 #include <stdio.h>
 // Program to find possible combinations of scoring plays
-// TD = 6 points, FG = 3 points, Safety = 2 points, TD + 2pt conversion = 8 points TD + 1pt field goal = 7 points
 
-int main() {
+int FootballScore() {
     int num;
     num = -1; // Initialize num to a value that is not 0 or 1 to enter the loop 
     while (num != 0 && num != 1) {
